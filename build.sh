@@ -19,8 +19,8 @@ if [ -e build ]; then
   echo "build/ already exists; start from a clean checkout" >&2
   exit 1
 fi
-test -f vendor/lib-plugins/android/aidl/dev/droidtop/pluginhost/IPluginRuntime.aidl \
-  || { echo "vendor/lib-plugins is missing: git submodule update --init" >&2; exit 1; }
+test -f vendor/mytop-plugins/android/aidl/dev/droidtop/pluginhost/IPluginRuntime.aidl \
+  || { echo "vendor/mytop-plugins is missing: git submodule update --init" >&2; exit 1; }
 mkdir -p build
 
 git -c advice.detachedHead=false clone --quiet --depth 1 --branch "$TAILSCALE_TAG" \
@@ -30,7 +30,7 @@ if [ "$actual" != "$TAILSCALE_COMMIT" ]; then
   echo "tailscale-android $TAILSCALE_TAG is $actual, not the pinned $TAILSCALE_COMMIT" >&2
   exit 1
 fi
-python3 apply-overlay.py build/upstream vendor/lib-plugins
+python3 apply-overlay.py build/upstream vendor/mytop-plugins
 
 (
   cd build/upstream

@@ -2,7 +2,7 @@
 
 Tailscale for droidtop (`dev.droidtop.tailscale`): Tailscale's own Android app, built from upstream
 [tailscale-android](https://github.com/tailscale/tailscale-android) with droidtop's plugin layer, as an
-**Application Interface plugin** (droidtop `docs/plugin-api.md` 1.3). Decided on Droidtop/tracker#645. The owner,
+**Application Interface plugin** (droidtop `docs/plugin-api.md` 1.3). Decided on mytop-project/tracker#645. The owner,
 2026-11-05: "Tailscale applications do it too. Look at the tailscale code, ktailctl ... We're building a local
 tailscale control plugin, after all. Build it as ab Application Interface plugin".
 
@@ -16,7 +16,7 @@ inside its own process: other apps cannot read its peers. So this is that app, w
 - **The plugin manifest** `assets/droidtop-plugin.json` (`kind: app_interface`): `ui.facets` for its page and the
   Quick Menu, and the permission `peers.addresses`.
 - **The service** `dev.droidtop.tailscale.DroidtopInterfaceService` (action `dev.droidtop.plugin.APP_INTERFACE`),
-  implementing `IPluginRuntime` from Droidtop/lib-plugins' AIDL (`vendor/lib-plugins`, compiled with the build). It
+  implementing `IPluginRuntime` from mytop-project/mytop-plugins' AIDL (`vendor/mytop-plugins`, compiled with the build). It
   answers droidtop's package signed with droidtop's pinned certificate and nothing else.
   - While droidtop holds it, the addresses of the tailnet's online devices (from upstream's `Notifier`, the IPN bus)
     go to droidtop's `peers.set_addresses` whenever they change, and an empty list when the tailnet goes down.

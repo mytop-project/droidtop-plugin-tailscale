@@ -2,7 +2,7 @@
 """Applies droidtop's plugin layer to an upstream tailscale-android checkout (build.sh runs it).
 
 Every edit names text that must occur exactly once in upstream's file, so a pin moved to an upstream that changed
-that text stops the build here instead of building something else. Usage: apply-overlay.py <upstream> <lib-plugins>
+that text stops the build here instead of building something else. Usage: apply-overlay.py <upstream> <mytop-plugins>
 """
 
 import os
@@ -34,7 +34,7 @@ for root, _, files in os.walk(overlay):
 
 # Its own package, so it installs beside the official Tailscale app; upstream's code stays in com.tailscale.ipn.
 edit("android/build.gradle.kts", "    minSdk = 26\n", '    applicationId = "dev.droidtop.tailscale"\n    minSdk = 26\n')
-# lib-plugins' AIDL, compiled with this build (droidtop docs/plugin-api.md 1.3: no copy can drift).
+# mytop-plugins' AIDL, compiled with this build (droidtop docs/plugin-api.md 1.3: no copy can drift).
 edit("android/build.gradle.kts", "    buildConfig = true\n", "    buildConfig = true\n    aidl = true\n")
 edit(
     "android/build.gradle.kts",

@@ -28,9 +28,9 @@ import org.json.JSONObject
 
 /**
  * Tailscale as one of droidtop's plugins: an `app_interface` plugin, which is this app itself (droidtop
- * docs/plugin-api.md 1.3; Droidtop/tracker#645). The owner, 2026-11-05: "We're building a local tailscale control
+ * docs/plugin-api.md 1.3; mytop-project/tracker#645). The owner, 2026-11-05: "We're building a local tailscale control
  * plugin, after all. Build it as ab Application Interface plugin". droidtop binds this service with [ACTION] over
- * Droidtop/lib-plugins' AIDL and hands over a broker, the only way this app reaches droidtop.
+ * mytop-project/mytop-plugins' AIDL and hands over a broker, the only way this app reaches droidtop.
  *
  * While droidtop holds it, the online peers' addresses go to droidtop's `peers.set_addresses` whenever they change,
  * and droidtop draws the facets ([Facets]). The service answers droidtop alone: the calling uid must be droidtop's
